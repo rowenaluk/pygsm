@@ -10,6 +10,8 @@ import errors
 class DeviceWrapper(object):
     
     def __init__(self, logger, *args, **kwargs):
+        if 'rtscts' in kwargs:
+            kwargs['rtscts'] = int(kwargs['rtscts'])
         self.device = serial.Serial(*args, **kwargs)
         self.logger = logger
 
